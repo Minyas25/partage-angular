@@ -40,16 +40,15 @@ export class ObjectComponent implements OnInit{
     if (this.annonce && this.annonce.id !== undefined) {
       this.annonceService.mettreAJourStatutObjet(this.annonce.id, 'prêt en cours').subscribe(
         (response: any) => {
-          console.log('Statut de l\'objet mis à jour en "prêt en cours"');
-          // Mettre à jour la demande d'emprunt pour la marquer comme acceptée
+          console.log("prêt en cours");
           this.mettreAJourDemandeEmprunt(emprunt.id, 'acceptée');
         },
         (error: any) => {
-          console.error('Erreur lors de la mise à jour du statut de l\'objet :', error);
+          console.error("Erreur lors de la mise à jour du statut de l'objet" , error);
         }
       );
     } else {
-      console.error('L\'ID de l\'emprunt ou de l\'annonce n\'est pas défini.');
+      console.error('ID non défini.');
     }
   }
   
@@ -66,11 +65,11 @@ export class ObjectComponent implements OnInit{
     if (idDemande !== undefined) {
       this.annonceService.mettreAJourDemandeEmprunt(idDemande, statut).subscribe(
         response => {
-          console.log('Demande d\'emprunt mise à jour avec succès!');
+          console.log("Demande d'emprunt mise à jour avec succès!");
           this.getAnnonceDetails();
         },
         error => {
-          console.error('Erreur lors de la mise à jour de la demande d\'emprunt :', error);
+          console.error("Erreur lors de la mise à jour de la demande d'emprunt :", error);
         }
       );
     }
