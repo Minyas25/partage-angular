@@ -1,1 +1,14 @@
-<p>annonce works!</p>
+<div class="container">
+  <div class="row">
+    <div class="col-md-6" *ngFor="let annonce of annonces">
+      <div class="card mb-3">
+        <div class="card-body">
+          <h5 class="card-title">{{ annonce.title }}</h5>
+          <p class="card-text">{{ annonce.description }}</p>
+          <p class="card-text">Date: {{ annonce.date | date }}</p>
+          <p class="card-text">Item: {{ annonce.item }}</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

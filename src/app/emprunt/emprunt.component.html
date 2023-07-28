@@ -1,0 +1,19 @@
+<!-- emprunts.component.html -->
+<div *ngFor="let annonce of annoncesSelectionnees">
+    <h3>{{ annonce.title }}</h3>
+    <!-- Afficher d'autres détails de l'annonce ici -->
+  </div>
+  
+  <!-- Formulaire de demande d'emprunt -->
+  <form (submit)="envoyerDemandeEmprunt()">
+    <div>
+      <label for="besoin">Besoin :</label>
+      <input type="text" id="besoin" [(ngModel)]="besoin" required>
+    </div>
+    <div>
+      <label for="dateEmprunt">Date d'emprunt :</label>
+      <input type="date" id="dateEmprunt" [(ngModel)]="dateEmprunt" required>
+    </div>
+    <button type="submit">Envoyer la demande d'emprunt</button>
+  </form>
+  

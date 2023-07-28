@@ -1,0 +1,17 @@
+<div *ngIf="annonce">
+    <h2>{{ annonce.title }}</h2>
+    <p>{{ annonce.description }}</p>
+    <p>{{ annonce.date | date }}</p>
+    <p>{{ annonce.item }}</p>
+  
+    <h3>Demandes d'emprunt reçues :</h3>
+    <ul>
+      <li *ngFor="let emprunt of annonce.id_emprunt">
+        {{ emprunt.message }} - {{ emprunt.date | date }} - Statut : {{ emprunt.status }}
+      </li>
+    </ul>
+    <button (click)="accepterDemande">Accepter</button>
+    <button (click)="refuserDemande">Refuser</button>
+    <!-- Ajoutez ici des éléments pour accepter, refuser les demandes d'emprunt et mettre à jour le statut de l'objet -->
+  </div>
+  

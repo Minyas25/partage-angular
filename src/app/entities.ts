@@ -12,10 +12,11 @@ export interface Annonce {
     date:Date;
     item:string;
     id_person:Person[];
+    id_emprunt: Emprunt[];
 }
 
 export interface Emprunt {
-    id?:number;
+    id:number;
     message:Text;
     date:Date;
     status:string;
