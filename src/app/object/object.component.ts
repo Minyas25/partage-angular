@@ -37,7 +37,6 @@ export class ObjectComponent implements OnInit{
 
   // Méthode pour accepter une demande d'emprunt
   accepterDemande(emprunt: Emprunt): void {
-    // Vérifier si l'ID de l'emprunt est défini avant de mettre à jour le statut de l'objet
     if (this.annonce && this.annonce.id !== undefined) {
       this.annonceService.mettreAJourStatutObjet(this.annonce.id, 'prêt en cours').subscribe(
         (response: any) => {
@@ -57,7 +56,6 @@ export class ObjectComponent implements OnInit{
 
   // Méthode pour refuser une demande d'emprunt
   refuserDemande(emprunt: Emprunt): void {
-    // Assurez-vous que l'ID de la demande d'emprunt est défini avant de l'utiliser
     if (emprunt && emprunt.id !== undefined) {
       this.mettreAJourDemandeEmprunt(emprunt.id, 'refusée');
     }
@@ -65,13 +63,10 @@ export class ObjectComponent implements OnInit{
 
   // Méthode pour mettre à jour la demande d'emprunt
   mettreAJourDemandeEmprunt(idDemande: number, statut: string): void {
-    // Assurez-vous que l'ID de la demande d'emprunt est défini avant de l'utiliser
     if (idDemande !== undefined) {
-      // Mettre à jour la demande d'emprunt en utilisant le service AnnonceService
       this.annonceService.mettreAJourDemandeEmprunt(idDemande, statut).subscribe(
         response => {
           console.log('Demande d\'emprunt mise à jour avec succès!');
-          // Après la mise à jour de la demande, vous pouvez actualiser les détails de l'objet
           this.getAnnonceDetails();
         },
         error => {

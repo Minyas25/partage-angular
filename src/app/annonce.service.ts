@@ -21,7 +21,7 @@ export class AnnonceService {
     ;
   }
 
-  envoyerDemandeEmprunt(demandeEmprunt: any){
+  demandeEmprunt(demandeEmprunt: any){
     return this.http.get<Annonce[]>(environment.serverUrl+'/api/emprunt/')
 
   }

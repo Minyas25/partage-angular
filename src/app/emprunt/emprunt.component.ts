@@ -1,5 +1,5 @@
-import { Component } from '@angular/core';
-import { Annonce } from '../entities';
+import { Component, OnInit } from '@angular/core';
+import { Annonce, Emprunt } from '../entities';
 import { AnnonceService } from '../annonce.service';
 
 @Component({
@@ -7,32 +7,42 @@ import { AnnonceService } from '../annonce.service';
   templateUrl: './emprunt.component.html',
   styleUrls: ['./emprunt.component.css']
 })
-export class EmpruntComponent {
+export class EmpruntComponent implements OnInit{
   annoncesSelectionnees: Annonce[] = [];
-  besoin: string;
-  dateEmprunt: Date;
+  emprunt: Emprunt = {
+    id: 0,
+    message: new Text(),
+    date: new Date(),
+    status: 'En attente', // valeur par défaut 'En attente'
+    id_person: [],
+    id_annonce: [],
+  
+  };
 
   constructor(private annonceService: AnnonceService) { }
 
-  // Méthode pour envoyer la demande d'emprunt
-  envoyerDemandeEmprunt(): void {
-    // Créer l'objet de la demande d'emprunt avec les détails du formulaire
-    const demandeEmprunt = {
-      annonces: this.annoncesSelectionnees,
-      besoin: this.besoin,
-      dateEmprunt: this.dateEmprunt
-    };
+  ngOnInit(): void {}
 
-    // Envoyer la demande d'emprunt via le service AnnonceService
-    this.annonceService.envoyerDemandeEmprunt(demandeEmprunt).subscribe(
+  demandeEmprunt(): void {
+    console.log(this.emprunt);
+
+    // Envoyer la demande d'emprunt au service AnnonceService pour traitement
+    this.annonceService.demandeEmprunt(this.emprunt).subscribe(
       (response: any) => {
-        // Traiter la réponse du serveur (si nécessaire)
-        console.log('Demande d\'emprunt envoyée avec succès!');
+        console.log("Demande d'emprunt envoyée avec succès!");
+        this.reset();
       },
       (error: any) => {
         console.error('Erreur lors de l\'envoi de la demande d\'emprunt :', error);
       }
     );
+  }
+
+  // Réinitialiser le formulaire après envoi
+  reset(): void {
+    this.emprunt.message = new Text();
+    this.emprunt.date = new Date();
+    this.emprunt.status = 'En attente'; // Remettre le statut par défaut à "En attente"
   }
 
 }
