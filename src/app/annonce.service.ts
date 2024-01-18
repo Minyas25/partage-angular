@@ -37,4 +37,8 @@ export class AnnonceService {
     return this.http.put(environment.serverUrl + '/api/emprunt/' + idDemande, requestBody);
   }
 
+  // Méthode pour créer une nouvelle annonce
+  creerAnnonce(nouvelleAnnonce: Annonce): Observable<Annonce> {
+    return this.http.post<Annonce>(`${environment.serverUrl}/api/annonce`, nouvelleAnnonce);
+  }
 }

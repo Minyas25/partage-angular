@@ -10,8 +10,18 @@ import { AnnonceService } from '../annonce.service';
 export class AnnonceComponent implements OnInit{
   
   annonces: Annonce[] = [];
-
-  constructor(private annonceService: AnnonceService) { }
+  nouvelleAnnonce: Annonce; // Nouvelle annonce à créer
+  constructor(private annonceService: AnnonceService) {
+    // Initialisez la nouvelle annonce ici
+    this.nouvelleAnnonce = {
+      title: '',
+      description: '',
+      date: new Date(),
+      item: '',
+      id_person: [],
+      id_emprunt: []
+    };
+   }
 
   ngOnInit(): void {
     this.fetchAnnonces();
@@ -21,5 +31,35 @@ export class AnnonceComponent implements OnInit{
     this.annonceService.fetchAll().subscribe(annonces => {
       this.annonces = annonces;
     });
+  }
+
+  creerAnnonce(): void {
+    // Vérifiez si les champs obligatoires sont renseignés
+    if (!this.nouvelleAnnonce.title || !this.nouvelleAnnonce.description) {
+      // Gérez le cas où des champs obligatoires sont manquants
+      console.error('Veuillez renseigner tous les champs obligatoires.');
+      return;
+    }
+
+    // Appelez le service pour créer une nouvelle annonce
+    this.annonceService.creerAnnonce(this.nouvelleAnnonce).subscribe(
+      (annonceCreee) => {
+        console.log('Annonce créée avec succès!', annonceCreee);
+        // Réinitialisez le formulaire ou effectuez d'autres actions nécessaires
+        this.nouvelleAnnonce = {
+          title: '',
+          description: '',
+          date: new Date(),
+          item: '',
+          id_person: [],
+          id_emprunt: []
+        };
+        // Mettez à jour la liste des annonces
+        this.fetchAnnonces();
+      },
+      (erreur) => {
+        console.error('Erreur lors de la création de l\'annonce', erreur);
+      }
+    );
   }
 }
