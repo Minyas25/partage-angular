@@ -9,6 +9,7 @@ import { AnnonceComponent } from './annonce/annonce.component';
 import { EmpruntComponent } from './emprunt/emprunt.component';
 import { FormsModule } from '@angular/forms';
 import { ObjectComponent } from './object/object.component';
+import { NavbarComponent } from './shared/navbar/navbar.component';
 
 @NgModule({
   declarations: [
@@ -16,7 +17,8 @@ import { ObjectComponent } from './object/object.component';
     HomeComponent,
     AnnonceComponent,
     EmpruntComponent,
-    ObjectComponent
+    ObjectComponent,
+    NavbarComponent
   ],
   imports: [
     BrowserModule,

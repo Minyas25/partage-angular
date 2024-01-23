@@ -2,11 +2,17 @@
   <div class="row">
     <div class="col-md-6" *ngFor="let annonce of annonces">
       <div class="card mb-3">
+        <!-- Si vous avez une image associée à l'annonce, vous pouvez l'ajouter ici -->
         <div class="card-body">
           <h5 class="card-title">{{ annonce.title }}</h5>
+          <img *ngIf="annonce.item" [src]="annonce.item" alt="Annonce Item" class="img-fluid">
+          <!-- Autres champs et éléments de votre annonce -->
           <p class="card-text">{{ annonce.description }}</p>
           <p class="card-text">Date: {{ annonce.date | date }}</p>
-          <p class="card-text">Item: {{ annonce.item }}</p>
+          <!-- Ajoutez d'autres champs pour les autres informations de l'annonce -->
+
+          <!-- Ajout du bouton pour aller quelque part (exemple avec un lien vers l'annonce) -->
+          <a href="/annonce/{{ annonce.id }}" class="btn btn-primary">Voir l'annonce</a>
         </div>
       </div>
     </div>
@@ -15,19 +21,22 @@
 
 <h2>Créer une nouvelle annonce</h2>
 <form (ngSubmit)="creerAnnonce()">
-  <label for="titre">Titre:</label>
-  <input id="titre" type="text" [(ngModel)]="nouvelleAnnonce.title" required>
+  <div class="card" style="width: 18rem;">
+    <div class="card-body">
+      <label for="titre">Titre:</label>
+      <input id="titre" type="text" [(ngModel)]="nouvelleAnnonce.title" class="form-control" required>
 
-  <label for="description">Description:</label>
-  <textarea id="description" [(ngModel)]="nouvelleAnnonce.description" required></textarea>
-  
-  <label for="date">Date:</label>
-  <input id="date" type="date" [(ngModel)]="nouvelleAnnonce.date" required>
+      <label for="description">Description:</label>
+      <textarea id="description" [(ngModel)]="nouvelleAnnonce.description" class="form-control" required></textarea>
+      
+      <label for="date">Date:</label>
+      <input id="date" type="date" [(ngModel)]="nouvelleAnnonce.date" class="form-control" required>
 
-  <label for="item">Item:</label>
-  <input id="item" type="text" [(ngModel)]="nouvelleAnnonce.item" required>
+      <label for="item">Item:</label>
+      <input id="item" type="file" (change)="onImageChange($event)" class="form-control" accept="image/*">
+      <!-- Ajoutez d'autres champs pour les autres informations de l'annonce -->
 
-  <!-- Ajoutez d'autres champs pour les autres informations de l'annonce -->
-
-  <button type="submit">Créer l'annonce</button>
+      <button type="submit" class="btn btn-primary">Créer l'annonce</button>
+    </div>
+  </div>
 </form>

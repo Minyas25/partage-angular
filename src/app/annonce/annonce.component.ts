@@ -26,7 +26,12 @@ export class AnnonceComponent implements OnInit{
   ngOnInit(): void {
     this.fetchAnnonces();
   }
-
+  
+  onImageChange(event: any): void {
+    const file = event.target.files[0];
+    // Ajoutez la logique pour traiter le fichier d'image (par exemple, le télécharger vers le serveur)
+  }
+  
   fetchAnnonces(): void {
     this.annonceService.fetchAll().subscribe(annonces => {
       this.annonces = annonces;
@@ -42,8 +47,9 @@ export class AnnonceComponent implements OnInit{
     }
 
     // Appelez le service pour créer une nouvelle annonce
-    this.annonceService.creerAnnonce(this.nouvelleAnnonce).subscribe(
-      (annonceCreee) => {
+    this.annonceService.creerAnnonce(this.nouvelleAnnonce)
+    .subscribe(
+      (annonceCreee: Annonce) => {
         console.log('Annonce créée avec succès!', annonceCreee);
         // Réinitialisez le formulaire ou effectuez d'autres actions nécessaires
         this.nouvelleAnnonce = {
@@ -61,5 +67,6 @@ export class AnnonceComponent implements OnInit{
         console.error('Erreur lors de la création de l\'annonce', erreur);
       }
     );
+    console.log('Après l\'appel au service');
   }
 }
