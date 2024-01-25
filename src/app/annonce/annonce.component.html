@@ -19,24 +19,3 @@
   </div>
 </div>
 
-<h2>Créer une nouvelle annonce</h2>
-<form (ngSubmit)="creerAnnonce()">
-  <div class="card" style="width: 18rem;">
-    <div class="card-body">
-      <label for="titre">Titre:</label>
-      <input id="titre" type="text" [(ngModel)]="nouvelleAnnonce.title" class="form-control" required>
-
-      <label for="description">Description:</label>
-      <textarea id="description" [(ngModel)]="nouvelleAnnonce.description" class="form-control" required></textarea>
-      
-      <label for="date">Date:</label>
-      <input id="date" type="date" [(ngModel)]="nouvelleAnnonce.date" class="form-control" required>
-
-      <label for="item">Item:</label>
-      <input id="item" type="file" (change)="onImageChange($event)" class="form-control" accept="image/*">
-      <!-- Ajoutez d'autres champs pour les autres informations de l'annonce -->
-
-      <button type="submit" class="btn btn-primary">Créer l'annonce</button>
-    </div>
-  </div>
-</form>

@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Annonce } from './entities';
+import { Annonce, Emprunt } from './entities';
 import { environment } from 'src/environments/environment';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
@@ -38,7 +38,7 @@ export class AnnonceService {
   }
 
   // Méthode pour créer une nouvelle annonce
-  creerAnnonce(nouvelleAnnonce: Annonce): Observable<Annonce> {
-    return this.http.post<Annonce>(`${environment.serverUrl}/api/annonce`, nouvelleAnnonce);
+  creerAnnonce(annonce: Annonce): Observable<any> {
+    return this.http.post<Annonce>(environment.serverUrl + `/api/annonce-create`, annonce);
   }
 }
