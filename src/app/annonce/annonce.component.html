@@ -12,8 +12,7 @@
           <!-- Ajoutez d'autres champs pour les autres informations de l'annonce -->
 
           <!-- Ajout du bouton pour aller quelque part (exemple avec un lien vers l'annonce) -->
-          <a href="/annonce/{{ annonce.id }}" class="btn btn-primary">Voir l'annonce</a>
-        </div>
+          <a [routerLink]="['/api/livre', annonce.id]" class="btn btn-primary">Voir l'annonce</a>        </div>
       </div>
     </div>
   </div>

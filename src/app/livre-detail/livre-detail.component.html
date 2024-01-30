@@ -1,0 +1,10 @@
+<div *ngIf="livre">
+    <h2>{{ livre.title }}</h2>
+    <p>{{ livre.description }}</p>
+    <p>Date: {{ livre.date }}</p>
+    <!-- Ajoutez d'autres champs pour les autres informations de l'annonce -->
+  </div>
+  <div *ngIf="!livre">
+    <p>Les détails de l'annonce ne sont pas disponibles.</p>
+  </div>
+  

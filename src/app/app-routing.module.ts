@@ -5,6 +5,7 @@ import { HomeComponent } from './home/home.component';
 import { EmpruntComponent } from './emprunt/emprunt.component';
 import { ObjectComponent } from './object/object.component';
 import { AnnonceCreateComponent } from './annonce-create/annonce-create.component';
+import { LivreDetailComponent } from './livre-detail/livre-detail.component';
 
 const routes: Routes = [
   {path: '', component:HomeComponent},
@@ -12,6 +13,8 @@ const routes: Routes = [
   {path: 'api/emprunt', component:EmpruntComponent},
   {path: 'api/objet/:id', component:ObjectComponent},
   {path: 'api/create', component:AnnonceCreateComponent},
+  {path: 'api/livre/:id', component:LivreDetailComponent},
+
 
 
 

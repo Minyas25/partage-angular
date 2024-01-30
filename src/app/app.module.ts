@@ -11,6 +11,8 @@ import { FormsModule } from '@angular/forms';
 import { ObjectComponent } from './object/object.component';
 import { NavbarComponent } from './shared/navbar/navbar.component';
 import { AnnonceCreateComponent } from './annonce-create/annonce-create.component';
+import { FooterComponent } from './footer/footer.component';
+import { LivreDetailComponent } from './livre-detail/livre-detail.component';
 
 @NgModule({
   declarations: [
@@ -20,7 +22,9 @@ import { AnnonceCreateComponent } from './annonce-create/annonce-create.componen
     EmpruntComponent,
     ObjectComponent,
     NavbarComponent,
-    AnnonceCreateComponent
+    AnnonceCreateComponent,
+    FooterComponent,
+    LivreDetailComponent
   ],
   imports: [
     BrowserModule,
